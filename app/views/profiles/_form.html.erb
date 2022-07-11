@@ -1,0 +1,55 @@
+<%= form_for [@user, @profile] do |f| %>
+    <% if @profile.errors.any? %>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <% @profile.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li> 
+        <% end %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+    <% end %>
+    <br>
+    <div class= "reg-form-profile">
+        <div class="field form-group">
+            <%= f.label "User Name:", class: "form-label" %>
+            <%= f.text_field :username, class: "form-control" %>
+        </div><br>
+
+        <div class="field form-group">
+            <%= f.label "Write about yourself:", class: "form-label" %>
+            <%= f.text_area :bio, :cols => 20, :rows => 5, class: "form-control" %>
+        </div><br>
+
+        <div class="field form-group">
+            <%= f.label "Choose Profile Picture:", class: "form-label" %>
+        </div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+            </div>
+            <div class="custom-file">
+                <%= f.file_field :avatar, class: "form-control custom-file-input"%>
+                <label class="custom-file-label" for="inputGroupFile01">Choose</label>
+            </div>
+        </div><br><br>
+
+        <div class="field form-group">
+            <%= f.label "Choose Cover Picture:", class: "form-label" %>
+        </div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+            </div>
+            <div class="custom-file">
+                <%= f.file_field :cover, class: "form-control custom-file-input"%>
+                <label class="custom-file-label" for="inputGroupFile01">Choose</label>
+            </div>
+        </div>
+    </div><br>
+        <div class="actions">
+            <%= f.submit "Save", class: "btn btn-success" %>
+        </div><br>
+
+        <%= f.hidden_field :user_id, value: @current_user.id%>
+<% end %>

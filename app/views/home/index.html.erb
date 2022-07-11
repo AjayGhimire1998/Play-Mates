@@ -1,0 +1,13 @@
+
+<div class="content">
+<h1>Hello World</h1>
+<% if @current_user %>
+    Logged in as: <%= @current_user.email %><br>
+    <%= link_to 'Edit Password', edit_password_path %>
+    <%= button_to 'Logout', logout_path, method: :delete %>
+    <% else %>
+    <%= link_to 'Sign Up', signup_path %>
+    or
+    <%= link_to 'Login', login_path %>
+<% end %>
+</div>

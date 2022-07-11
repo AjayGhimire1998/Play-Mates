@@ -1,0 +1,20 @@
+
+  <%= form_with model: @current_user, url: edit_password_path do |f| %>
+      <br>
+    <div class= "reg-form content">
+        <h3 class="form-head">Change Password</h3><br><br>
+        <div class="field form-group">
+            <%= f.label "Password:", class: "form-label" %>
+            <%= f.password_field :password, class: "form-control" %>
+        </div><br>
+
+        <div class="field form-group">
+            <%= f.label "Confirm Password:", class: "form-label" %>
+            <%= f.password_field :password_confirmation, class: "form-control" %>
+        </div><br>
+
+        <div class="actions">
+            <%= f.submit "Change Password" %>
+        </div>
+    </div>   
+<% end %>

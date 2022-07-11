@@ -1,0 +1,11 @@
+<!-- The sidebar -->
+<div class="sidebar">
+  <% if current_user.profile.nil? %>
+    <%= link_to "Create a Profile", new_user_profile_path(user_id: user), class: "#{active_class(new_user_profile_path(user_id: user))}" %>
+  <% else %>
+    <%= link_to_image("#{user.profile.avatar.url}", "profile-pic", user_profile_path(user_id: user,id: user.profile), class: "#{active_class(user_profile_path(user_id: user, id: user.profile))}") %>
+  <% end %>
+  <%= link_to "Home", posts_path, class: "#{active_class(posts_path) }" %>
+  <%= link_to "Notifications", root_path %>
+  <%= link_to "Log Out", logout_path , method: :delete, data: { confirm: 'Are you sure?' } %>
+</div>

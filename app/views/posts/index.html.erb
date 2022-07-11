@@ -1,0 +1,6 @@
+<div class="content">
+    <% @posts.each do |post| %>
+        <%= post.caption %><br>
+        <%= User.find_by(id: post.user_id).profile.username %><br>
+    <% end %>
+</div>

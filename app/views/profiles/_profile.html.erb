@@ -1,0 +1,20 @@
+<div class="content">
+    <div class="user_profile_cap">
+        <div class="user_profile_cover", style = "background-image: url(<%= profile.cover.url%>);">
+        </div>
+        <div class="user_profile_headline">
+            <%= image_tag profile.avatar.url(:medium) %> 
+
+            <h2><%= profile.username %></h2>
+            <span><%= profile.bio %></span>
+    </div>
+    <%= link_to 'Edit Profile', edit_user_profile_path(user.id, profile.id), class: "btn btn-primary" %> 
+    <%= link_to 'Back', root_path, class: "btn btn-primary", style: "float: right" %> 
+    <br><br>
+    <div class="card">
+        <h5 class="card-header">Unhappy?? Cancel your account here</h5>
+        <div class="card-body">
+            <%= link_to 'Cancel Account', cancel_path, method: :delete,  class: 'btn btn-outline-danger btn-sm', data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+        </div>
+    </div>
+</div>

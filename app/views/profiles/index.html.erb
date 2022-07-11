@@ -1,0 +1,6 @@
+<div class="content">
+<% @profiles.each do |p| %> 
+    <p><%= p.username %></p>
+    <%= image_tag p.avatar.url(:medium) %>
+<% end %>
+</div>
