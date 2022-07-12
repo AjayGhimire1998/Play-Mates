@@ -1,0 +1,23 @@
+
+<% posts.each do |post| %>
+    <div class="home-posts">
+        <%= link_to_image(post.user.profile.avatar.url, "in-posts-avatar", view_profile_path(id: post.user.id)) %>
+        <%= link_to post.user.profile.username, view_profile_path(id: post.user.id), class: "posts-username"  %><%=  %><br>
+        <span><i><small>📍<%= current_city %>, <%= current_country %></small></i></span><br><br>
+        <%= post.caption %>
+        <br>
+
+        <div class="post-image-div", style = "background-image: url(<%= post.image.url%>);"></div><br>
+
+        <% if post.user == current_user  %> 
+            <%= link_to "Edit Post", edit_user_post_path(user_id: post.user_id, id: post.id), class: "btn btn-primary btn-sm" %>
+            <%= link_to "Delete Post", user_post_path(post.user, post), class: "btn btn-danger btn-sm", style: "float: right;", data: {
+                turbo_method: :delete,
+                turbo_confirm: "Are you sure?"
+              }  %>
+        <% end %>
+    </div>
+<% end %>
+
+
+ 

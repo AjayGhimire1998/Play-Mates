@@ -1,8 +1,9 @@
 <div class="topnav">
   <div class="logo-head-nav">
     <%= image_tag 'logo.png', class: 'logo navbar-brand' %>
-    
+    <div class="welcome"> Welcome, <%= user.first_name  %></div>
   </div>
+
   <div class="search-container">
     <form>
       <input type="text" placeholder="Search.." name="search">

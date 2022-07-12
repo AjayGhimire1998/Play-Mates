@@ -1,20 +1,53 @@
-<h1>New Post</h1>
-
-<%= form_for @post do |f| %>
-    <%= f.label :caption %>
-    <%= f.text_field :caption %>
-    <br>
-
-
-    <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %>
-    <br>
-
-    <%= f.fields_for :categories, post.categories.build do |categories_fields| %>
-        <%= categories_fields.label :name, "Catgeory" %>
-        <%= categories_fields.text_field :name %>
-    <% end %>
-    <br>
-    <%= f.hidden_field :user_id, value: @current_user.id%>
-
-    <%= f.submit %>
+<% if post.invalid? %>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <li><%= post.errors.full_messages[1] %></li> 
+        <li><%= post.errors.full_messages[2] %></li> 
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
 <% end %>
+<div class="post-form">
+    <h3>Create Post</h3>
+    <br>
+    <%= form_for post, url: user_posts_path(user_id: current_user.id) do |f| %>
+        <%= f.text_area :caption, placeholder: "What's on your mind?", :cols => 30, :rows => 3, class: "caption-box"  %>
+        <br><br>
+
+        <%= f.label "Choose an Image or Video to Upload:" %>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+            </div>
+            <div class="custom-file">
+                <%= f.file_field :video, class: "form-control custom-file-input" %>
+                <label class="custom-file-label" for="inputGroupFile01">Choose</label>
+            </div>
+        </div><br><br>
+
+        <%= f.label "Select Games related to your post:" %>
+        <div class= "checkboxes">
+            <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %>
+        </div><br>
+
+        <button class=" toggler btn btn-warning btn-sm">Add Games</button>
+        <br>
+        
+        <div class="category-input">
+            <%= f.fields_for :categories, post.categories.build do |categories_fields| %>
+                <%= categories_fields.label :name, "Enter Game Name: " %>
+                <%= categories_fields.text_field :name %>
+            <% end %>
+        </div>
+        <br>
+
+        <%= f.hidden_field :user_id, value: @current_user.id%>
+
+        <div class="actions">
+            <%= f.submit "Save", class: "btn btn-success" %>
+        </div><br>
+    <% end %>
+    <div class="close-post-form">
+        <button class= "btn btn-danger btn-sm" onclick="handlePostFormClose()">Close</button>
+    </div>
+</div>

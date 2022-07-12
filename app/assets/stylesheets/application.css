@@ -13,6 +13,9 @@
  *= require_tree .
  *= require_self
  */
+ .body{
+  font-family: monospace;
+ }
  .reg-form{
     padding: 50px;
     background-color: rgb(0, 0, 86);
@@ -27,6 +30,7 @@
     padding: 50px;
     background-color: rgb(0, 0, 86);
     border: 5px solid black;
+    text-align: center;
 
  }
  .form-label{
@@ -87,7 +91,7 @@
   top: 0;
   right: 0;
   left: 0;
-  z-index: 10;
+  z-index: 100;
 }
 .logo-head-nav{
   float:left;
@@ -166,28 +170,65 @@ input[type=text] {
 
 /* Page content. The value of the margin-left property should match the value of the sidebar's width property */
 div.content {
-  margin-top: 100px;
+  margin-top: 105px;
   margin-left: 150px;
+  margin-right: 150px;
   padding: 1px 16px;
   height: auto;
   align-items: center;
   justify-content: center;
 }
 .content-alert{
-  margin-top: 90px;
+  margin-top: 120px;
   align-items: center;
   justify-content: center;
   margin-left: 150px;
   margin-right: 150px;
-  padding: 8px 20px;
+  padding: 9px 20px;
 }
 .profile-pic{
   width: 75px;
   height: 75px;
   border-radius: 50%;
   border: 2px solid black;
-  filter: drop-shadow(0 0 8px red);
+  filter: drop-shadow(0 0 8px white);
   object-fit: cover;;
+}
+.show-post-form-button{
+  border: 0.5px solid gray;
+  background-color: rgb(0, 0, 86);
+  color: white;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+  /* z-index: 10; */
+
+}
+.in-button-div{
+ display: block;
+}
+.in-button-avatar{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid black;
+  filter: drop-shadow(0 0 10px white);
+  object-fit: cover;
+  float: left;
+}
+.in-button-p{
+  background-color: white;
+  color: black;
+  filter: drop-shadow(0 0 5px white);
+}
+.in-posts-avatar{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid black;
+  filter: drop-shadow(0 0 6px black);
+  object-fit: cover;
+  float: left;
 }
 
 /* facebook-like-profile */
@@ -219,7 +260,7 @@ div.content {
     float:left;
     margin:-90px 10px 0  0;
     position:relative;
-    z-index:111;
+    z-index:1;
     object-fit: cover;
     background-color:white;
 }
@@ -237,17 +278,70 @@ div.content {
     color:gray;
  
 }
-/* .cover-image{
-  width: 970px;
-  height: 215px;
-  -webkit-border-top-left-radius: 5px;
-  -webkit-border-top-right-radius: 5px;
-  -moz-border-radius-topleft: 5px;
-  -moz-border-radius-topright: 5px;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+.welcome{
+  font-size: 16px;
+  font-weight: bolder;
+  font-family:  monospace;
+}
+
+.hidden-post-form{
+  display: none;
+}
+.post-form{
+  border: 1px solid black;
+  padding: 10px;
+  /* display: inline-block; */
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  background-color: rgb(0, 0, 86);
+  color: white;
+}
+.caption-box{
+  display: inline;
+}
+.checkboxes{
+  background-color: white;
+  color: black;
+}
+.checkboxes label{
+  padding: 5px;
+}
+.category-input{
+  display: none;
+}
+.category-input-show{
+  display: block;
+}
+.home-posts{
+  height: auto;
+  width: 500px;
+  border: 1px solid black;
+  padding: 10px;
+  background-color: white;
+  margin: 100px;
+  filter: drop-shadow(0 0 50px rgb(0, 0, 86))
+}
+.posts-username{
+  font-size: 16px;
+  font-weight: 900;
+  margin: 5px;
+}
+.home-posts span{
+  font-size: 13px;
+}
+.post-image-div{
+  height: 350px;
+  width: 480px;
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+
+}
+.post-image{
+  position:relative;
   object-fit: cover;
-} */
+}
 
 /* On screens that are less than 700px wide, make the sidebar into a topbar */
 @media screen and (max-width: 600px) {
@@ -268,6 +362,7 @@ div.content {
   div.content {
     margin-left: 0;
     margin-top: 260px;
+    
   }
   .reg-form{
     padding: 10px;

@@ -1,4 +1,6 @@
 
 <div class="content">
-<%= render partial: 'form', locals: {post: @post} %>
+    <%= form_for @post, url: user_posts_path(user_id: current_user.id) do |f| %>
+        <%= render partial: 'form', locals: {post: @post} %>
+    <% end %>
 </div>

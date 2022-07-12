@@ -1,4 +1,5 @@
 <div class="content">
-<%= @post.caption %>
-
+    <% @posts.each do |post| %>
+        <%= post.caption %>
+    <% end %>
 </div>

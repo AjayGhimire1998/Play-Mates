@@ -1,13 +1,23 @@
 
 <div class="content">
-<h1>Hello World</h1>
-<% if @current_user %>
-    Logged in as: <%= @current_user.email %><br>
-    <%= link_to 'Edit Password', edit_password_path %>
-    <%= button_to 'Logout', logout_path, method: :delete %>
-    <% else %>
-    <%= link_to 'Sign Up', signup_path %>
-    or
-    <%= link_to 'Login', login_path %>
-<% end %>
+    <div class="in-button-div">
+        <button class="show-post-form-button" onclick="handlePostFormToggler()">
+                <%= image_tag current_user.profile.avatar.url, class: "in-button-avatar" %>
+                <small style="float: right;">Hello, <%= current_user.profile.username %></small>
+                <br><br>
+                <p class="in-button-p">Have Something to Say?</p>
+        </button>
+     </div>
+     <br>
+
+    <div class="hidden-post-form">
+        <%= render partial: 'posts/form', locals: {post: @post} %>
+    </div>
+
+    <% if @current_user %>
+        Logged in as: <%= current_user.email %><br>
+    <% end %>
+    <br>
+
+    <%= render partial: 'posts/index', locals: {posts: @posts, current_country: @current_country, current_city: @current_city} %>
 </div>

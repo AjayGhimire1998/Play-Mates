@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
     before_action :current_user
+    before_action :find_location
     helper_method :current_user
 
     def current_user 
@@ -17,7 +18,32 @@ class ApplicationController < ActionController::Base
     end
 
     def require_set_profile! 
-        redirect_to new_user_profile_path(user_id: @current_user)
+        redirect_to new_user_profile_path(user_id: @current_user), notice: "Profile not set up!" if @current_user.profile.nil?
     end
 
+    def current_user_ip
+        request.remote_ip
+    end
+
+    def find_location 
+        @geocoder = Geocoder.search(current_user_ip)[0]
+        if @geocoder.city.nil? && @geocoder.country.nil?
+            @current_country = "Sweet Home"
+            @current_city = "Home"
+        else
+            @current_country = @geocoder.country
+            @current_city = @geocoder.city
+        end
+    end
+
+    # def verify_user
+    #     if params[:id] != @current_user.id
+    #         return false
+    #     end
+    # end
+
+    def correct_user_profile
+        @user_profile = current_user.profile
+        redirect_to root_path, notice: "Not authorized" if @user_profile.nil?
+    end
 end

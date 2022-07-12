@@ -1,7 +1,7 @@
 class HomeController < ApplicationController 
+    before_action :require_user_logged_in!
     def index 
-        if @current_user.nil?
-            redirect_to login_path, notice: "You should login first!"
-        end
+        @post = Post.new
+        @posts = Post.all
     end
 end

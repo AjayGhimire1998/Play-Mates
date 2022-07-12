@@ -1,0 +1,7 @@
+<div class="content">
+    <div class="edit-post-form">
+        <%= form_for @post, url: user_post_path(user_id: current_user.id, id: @post.id) do |f| %>
+            <%= render partial: 'form', locals: {post: @post} %>
+        <% end %>
+    </div>
+</div>

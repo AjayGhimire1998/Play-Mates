@@ -1,15 +1,14 @@
-
-<%= form_for @user, url: signup_path do |f| %>
-    <% if @user.errors.any? %>
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <% @user.errors.full_messages.each do |msg| %>
+<% if @user.invalid? %>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <% @user.errors.full_messages.each do |msg| %>
         <li><%= msg %></li> 
-        <% end %>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        </div>
     <% end %>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+<% end %>
+<%= form_for @user, url: signup_path do |f| %>
     <br>
     <div class= "reg-form">
         <h3 class="form-head">Sign up</h3><br>
