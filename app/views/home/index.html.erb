@@ -1,3 +1,8 @@
+<div class="right-sidebar">
+    <%= render partial: 'profiles/searchform' %>
+    <br><br>
+    <%= render partial: 'profiles/searched', locals: {profiles: @profiles} %>
+</div>
 
 <div class="content">
     <div class="in-button-div">
@@ -9,15 +14,21 @@
         </button>
      </div>
      <br>
-
     <div class="hidden-post-form">
         <%= render partial: 'posts/form', locals: {post: @post} %>
     </div>
+    <br><br>
 
-    <% if @current_user %>
-        Logged in as: <%= current_user.email %><br>
-    <% end %>
-    <br>
-
-    <%= render partial: 'posts/index', locals: {posts: @posts, current_country: @current_country, current_city: @current_city} %>
+    <div class="filter-posts">
+        <h4>Filter posts:</h4>
+        <%= form_tag(posts_path, method: :get) do %>
+            <%= select_tag "category", options_from_collection_for_select(Category.all, :id, :name), include_blank: true %>
+            <%# <%= select_tag "date", options_for_select(["Today", "Old News"]), include_blank: true %> 
+            <%= submit_tag "Filter", class: "btn btn-warning btn-sm" %>
+        <% end %>
+    </div> 
 </div>
+<%= render template: 'posts/index' %>
+
+
+

@@ -1,0 +1,7 @@
+
+<div class="search-container">
+    <%= form_tag(profiles_path, method: :get) do %>
+    <%= search_field_tag :search, params[:search], placeholder: "Search Mates...", class: 'search-form-input' %>
+    <button type="submit" class="btn btn-warning btn-sm">Search</button>
+    <% end %>
+</div>

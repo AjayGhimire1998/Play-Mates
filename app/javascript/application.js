@@ -28,15 +28,16 @@ window.handlePostFormClose = function(){
     closeButton.parentElement.parentElement.style.display = "none"
 }
 
-// window.handleAddCategoryToggler = function(e){
-//   e.preventDefault();
-//   const toogleInputDiv = document.querySelector(".category-input");
-//   toogleInputDiv.style.display = "block";
-// }
+window.handleAddCategoryToggler = function(e){
+  e.preventDefault();
+  console.log(e);
+  const toogleInputDiv = document.querySelector(".category-input");
+  toogleInputDiv.style.display = "block";
+}
 
-const clickButton = document.querySelector(".toggler");
-clickButton.addEventListener("click", (event) => {
-  event.preventDefault();
-  const toogleDiv = document.querySelector(".category-input");
-  toogleDiv.classList.add("category-input-show");
-});
+// const clickButton = document.querySelector(".toggler");
+// clickButton.addEventListener("click", (event) => {
+//   event.preventDefault();
+//   const toogleDiv = document.querySelector(".category-input");
+//   toogleDiv.classList.add("category-input-show");
+// });

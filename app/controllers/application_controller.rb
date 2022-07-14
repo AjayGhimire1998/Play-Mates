@@ -1,10 +1,14 @@
 class ApplicationController < ActionController::Base
     before_action :current_user
     before_action :find_location
-    helper_method :current_user
+    helper_method :current_user, :users, :uniq_name
 
     def current_user 
        @current_user = User.find_by(id: session[:user_id]) if session[:user_id]
+    end
+
+    def users 
+        User.all
     end
 
     def already_logged_in! 
@@ -46,4 +50,9 @@ class ApplicationController < ActionController::Base
         @user_profile = current_user.profile
         redirect_to root_path, notice: "Not authorized" if @user_profile.nil?
     end
+
+    def uniq_name
+        Category.distinct.pluck(:name)
+    end
+
 end

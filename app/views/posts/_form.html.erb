@@ -8,9 +8,9 @@
     </div>
 <% end %>
 <div class="post-form">
-    <h3>Create Post</h3>
+    <h3>Create a Post</h3>
     <br>
-    <%= form_for post, url: user_posts_path(user_id: current_user.id) do |f| %>
+    <%= form_for post do |f| %>
         <%= f.text_area :caption, placeholder: "What's on your mind?", :cols => 30, :rows => 3, class: "caption-box"  %>
         <br><br>
 
@@ -20,7 +20,7 @@
                 <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
             </div>
             <div class="custom-file">
-                <%= f.file_field :video, class: "form-control custom-file-input" %>
+                <%= f.file_field :image, class: "form-control custom-file-input" %>
                 <label class="custom-file-label" for="inputGroupFile01">Choose</label>
             </div>
         </div><br><br>
@@ -30,8 +30,8 @@
             <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %>
         </div><br>
 
-        <button class=" toggler btn btn-warning btn-sm">Add Games</button>
-        <br>
+        <button class="toggler btn btn-warning btn-sm", onclick="handleAddCategoryToggler(event)">Add Games</button>
+        <br><br>
         
         <div class="category-input">
             <%= f.fields_for :categories, post.categories.build do |categories_fields| %>

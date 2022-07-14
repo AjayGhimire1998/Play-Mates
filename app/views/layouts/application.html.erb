@@ -15,18 +15,19 @@
     <% if @current_user %>
       <%= render partial: 'layouts/topnav', locals: {user: current_user} %>
       <%= render partial: 'layouts/nav', locals: {user: current_user }%> 
+      
     <% else %>
       <div class="logo-head">
         <%= image_tag 'logo.png', class: 'logo' %>
       </div>
     <% end %>
     <div class = "container">
-    <br>
-    <br>
-      <% if notice  %>
-        <%= render 'layouts/alerts' %>
-      <% end %>
-      <%= yield %>
+      <br>
+      <br>
+        <% if notice  %>
+          <%= render 'layouts/alerts' %>
+        <% end %>
+        <%= yield %>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

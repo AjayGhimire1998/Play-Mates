@@ -1,4 +1,5 @@
+
 <%= render partial: 'profile', locals: {profile: @profile, user: @user, current_country: @current_country, current_city: @current_city} %>
-<div class="content">
-    <%= render partial: 'posts/index', locals: {posts: @posts, current_country: @current_country, current_city: @current_city} %>
-</div>
+
+<%= render template: 'posts/index' %>
+

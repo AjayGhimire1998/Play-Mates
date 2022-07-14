@@ -3,13 +3,17 @@ class ProfilesController < ApplicationController
     before_action :correct_user_profile, only: [:edit, :update, :destroy]
 
     def index
-        @profiles = Profile.all 
+        @profiles = Profile.all
+        if !params[:search].blank? 
+            @profiles = Profile.search_by_username(params[:search])
+        else
+            @profiles = Profile.all
+        end 
     end
 
     def new 
         @user = @current_user
         @profile = @user.build_profile
-
     end
 
     def create 
@@ -60,6 +64,6 @@ class ProfilesController < ApplicationController
 
     private 
     def profile_params 
-        params.require(:profile).permit(:username, :avatar, :user_id, :bio, :cover)
+        params.require(:profile).permit(:username, :avatar, :user_id, :bio, :cover, :search)
     end
 end

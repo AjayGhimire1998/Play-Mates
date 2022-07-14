@@ -3,12 +3,16 @@ Rails.application.routes.draw do
   # resources :posts
 
   resources :users do 
-    resources :profiles
+    resources :profiles, only: [:edit, :new, :create, :update]
   end
 
   resources :users do 
-    resources :posts
+    resources :posts, only: [:new, :edit, :destroy]
   end
+
+  resources :posts, only: [:index, :create, :update]
+  resources :profiles, only: [:index]
+  # get '/search', to: "profiles#index"
 
   get 'users/:id/profile', to: 'profiles#view', as: 'view_profile'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

@@ -1,7 +1,6 @@
 <div class="content">
     <div class="edit-post-form">
-        <%= form_for @post, url: user_post_path(user_id: current_user.id, id: @post.id) do |f| %>
+        <h3>Edit Post</h3>
             <%= render partial: 'form', locals: {post: @post} %>
-        <% end %>
     </div>
 </div>

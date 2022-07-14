@@ -1,6 +1,10 @@
+<div class="right-sidebar">
+    <%= render partial: 'profiles/searchform' %>
+    <br><br>
+    <%= render partial: 'profiles/searched', locals: {profiles: @profiles} %>
+</div>
 <div class="content">
-<% @profiles.each do |p| %> 
-    <p><%= p.username %></p>
-    <%= image_tag p.avatar.url(:medium) %>
-<% end %>
+    <% @profiles.each do |profile| %>
+        <%= render partial: 'posts/posts', locals: {posts: profile.user.posts, current_city: @current_city, current_country: @current_country} %>
+    <% end %>
 </div>
