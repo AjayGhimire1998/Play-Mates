@@ -44,7 +44,13 @@ gem "bootsnap", require: false
 gem "kt-paperclip", "~> 6.4", ">= 6.4.1"
 gem "geocoder"
 gem "webpacker"
-gem 'paperclip-av-transcoder'
+gem 'redis'
+gem 'omniauth-rails_csrf_protection', '~> 0.1.2'
+
+gem "dotenv-rails", "~> 2.7"
+gem "omniauth", "~> 2.1"
+gem 'omniauth-google-oauth2'
+
 
 # Use Sass to process CSS
 # gem "sassc-rails"

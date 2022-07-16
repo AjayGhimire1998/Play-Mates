@@ -10,13 +10,10 @@
             <span><%= profile.bio %></span><br>
             <span><i><small><%= current_city %>, <%= current_country %></small></i></span><br>
             <strong>Interested in:  
-                <i style= "color:red;">
-                    <% profile.user.posts.each do |p| %>        
-                        <%= uniq_category_name p %>
-                    <% end %>
+                <i style= "color:red;">       
+                    <%= uniq_category_name profile.user.posts %>
                 </i>
             </strong>
-            
         </div>
     </div><br>
     
@@ -24,18 +21,15 @@
         <%= link_to 'Edit Profile', edit_user_profile_path(user.id, profile.id), class: "btn btn-primary" %> 
         <%= link_to 'Edit Password', edit_password_path, class: "btn btn-primary" %> 
         <%= link_to 'Back', root_path, class: "btn btn-primary" %>
-    <% else %>
-        <%= link_to 'Back', root_path, class: "btn btn-primary", style: 'float:right;' %>
-        <%= link_to "Team UP", root_path, class: "btn btn-danger" %>
-    <% end %>
-    <br><br>
-
-    <% if profile.user == current_user %>
         <div class="card">
             <h5 class="card-header">Unhappy?? Cancel your account here</h5>
             <div class="card-body">
                 <%= link_to 'Cancel Account', cancel_path, class: 'btn btn-outline-danger btn-sm', data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
             </div>
         </div><br>
+    <% else %>
+        <%= link_to 'Back', root_path, class: "btn btn-primary", style: 'float:right;' %>
+        <%= link_to "Team UP", root_path, class: "btn btn-danger" %>
     <% end %>
+    <br><br>
 </div>

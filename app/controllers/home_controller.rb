@@ -5,6 +5,6 @@ class HomeController < ApplicationController
         @post = Post.new
         @posts = Post.all
         @profiles = Profile.all
-        @post
+        # @post
     end
 end

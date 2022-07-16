@@ -1,5 +1,5 @@
 
-<%= render partial: 'profile', locals: {profile: @profile, user: @user, current_country: @current_country, current_city: @current_city} %>
+<%= render partial: 'profile', locals: {profile: @profile, user: @user, current_country: @current_country, current_city: @current_city, room: @profile.user.rooms.new} %>
 
 <%= render template: 'posts/index' %>
 

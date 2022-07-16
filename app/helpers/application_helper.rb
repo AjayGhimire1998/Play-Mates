@@ -7,4 +7,7 @@ module ApplicationHelper
         link_to(image_tag(image_path, class: class_name), target_link, options)
     end
 
+    # def create_room(roo)
+    #     user.build
+    # end
 end

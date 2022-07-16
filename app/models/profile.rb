@@ -12,11 +12,7 @@ class Profile < ApplicationRecord
     has_attached_file :cover, styles: { medium: "300x300>", thumb: "100x100>" }
     validates_attachment_content_type :cover, content_type: /\Aimage\/.*\z/
 
-    def self.search_by_username(search_text)
-        if search_text 
-            self.where("lower(username) LIKE :search", search: "%#{search_text}%")
-        else
-            self.all
-        end
-    end
+    scope :search_by_username, -> (search_text) {where("lower(username) LIKE :search", search: "%#{search_text}%")}
+
+
 end

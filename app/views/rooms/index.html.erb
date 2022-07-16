@@ -1,0 +1,35 @@
+<div class="content">
+  <div class="ui segment">
+  <h3>Chats</h3>
+
+  <div class="ui list">
+    <div class="item">
+      <% @rooms.each do |room| %>
+        <% if room.sender_id == current_user.id || room.recipient_id == current_user.id %>
+          <% if room.sender_id == current_user.id %>
+            <% recipient = User.find(room.recipient_id) %>
+          <% else %>
+            <% recipient = User.find(room.sender_id) %>
+          <% end %>
+          <%= link_to recipient.profile.username, room_messages_path(room)%>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+  <div class="content">
+    <h3>All Users</h3>
+      <% @users.each do |user| %>
+        <% if user.id != current_user.id %>
+        <div class="item">
+            <%= user.profile.username %> 
+            <%= link_to 'Message me!', rooms_path(sender_id: current_user.id, recipient_id: user.id), method: 'post' %>
+        </div>
+        <% end %>
+      <% end %>
+  </div>
+
+
+
+</div>

@@ -1,11 +1,9 @@
 module ProfilesHelper
 
     def uniq_category_name(p)
-            p.categories.each do |c|
-                @liked_games = []
-                @liked_games << c.name
-            end
-        @liked_games
+            p.map do |post|
+                post.categories
+            end.flatten.uniq.map {|c| c.name}.join(", ")
     end
 
 end

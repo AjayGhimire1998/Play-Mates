@@ -6,6 +6,6 @@
     <%= link_to_image("#{user.profile.avatar.url}", "profile-pic", view_profile_path(id: user), class: "#{active_class(view_profile_path(id: user))}") %>
   <% end %>
   <%= link_to "Home", root_path, class: "#{active_class(root_path) }" %>
-  <%= link_to "Notifications", root_path %>
+  <%= link_to "Chat", rooms_path %>
   <%= link_to "Log Out", logout_path , method: :delete, data: { confirm: 'Are you sure?' } %>
 </div>

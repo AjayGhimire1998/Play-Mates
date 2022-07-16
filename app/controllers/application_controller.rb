@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+    protect_from_forgery 
     before_action :current_user
     before_action :find_location
     helper_method :current_user, :users, :uniq_name

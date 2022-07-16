@@ -7,7 +7,8 @@
         <%= post.caption %>
         <br>
 
-        <div class="post-image-div", style = "background-image: url(<%= post.image.url %>);"></div><br>
+        <div class="post-image-div", style = "background-image: url(<%= post.image.url %>);"></div>
+        <br>
 
         <% if post.user == current_user  %> 
             <%= link_to "Edit Post", edit_user_post_path(user_id: post.user_id, id: post.id), class: "btn btn-primary btn-sm" %>

@@ -30,7 +30,6 @@ window.handlePostFormClose = function(){
 
 window.handleAddCategoryToggler = function(e){
   e.preventDefault();
-  console.log(e);
   const toogleInputDiv = document.querySelector(".category-input");
   toogleInputDiv.style.display = "block";
 }

@@ -16,12 +16,8 @@
 
         <%= f.label "Choose an Image or Video to Upload:" %>
         <div class="input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-            </div>
             <div class="custom-file">
-                <%= f.file_field :image, class: "form-control custom-file-input" %>
-                <label class="custom-file-label" for="inputGroupFile01">Choose</label>
+                <%= f.file_field :post_file, class: "form-control custom-file-input" %>
             </div>
         </div><br><br>
 
