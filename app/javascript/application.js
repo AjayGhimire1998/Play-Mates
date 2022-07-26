@@ -18,25 +18,47 @@ import "@hotwired/turbo-rails";
 import "controllers";
 // console.log('Hello World from Webpacker')
 
-window.handlePostFormToggler = function(){
-    const toogleDiv = document.querySelector(".hidden-post-form"); 
-    toogleDiv.style.display = "block";
-}
+window.handlePostFormToggler = function () {
+  const toogleDiv = document.querySelector(".hidden-post-form");
+  toogleDiv.style.display = "block";
+};
 
-window.handlePostFormClose = function(){
-    const closeButton = document.querySelector(".close-post-form"); 
-    closeButton.parentElement.parentElement.style.display = "none"
-}
+window.handlePostFormClose = function () {
+  const closeButton = document.querySelector(".close-post-form");
+  closeButton.parentElement.parentElement.style.display = "none";
+};
 
-window.handleAddCategoryToggler = function(e){
+window.handleAddCategoryToggler = function (e) {
   e.preventDefault();
   const toogleInputDiv = document.querySelector(".category-input");
   toogleInputDiv.style.display = "block";
-}
+};
 
-// const clickButton = document.querySelector(".toggler");
-// clickButton.addEventListener("click", (event) => {
-//   event.preventDefault();
-//   const toogleDiv = document.querySelector(".category-input");
-//   toogleDiv.classList.add("category-input-show");
-// });
+window.showPreview = function (event) {
+  if (event.target.files.length > 0) {
+    const src = URL.createObjectURL(event.target.files[0]);
+    const videoExt = ["mov", "mkv", "mp4", "webm"];
+    const name = event.target.files[0].name;
+    const slicedDot = name.lastIndexOf(".");
+    const ext = name.substring(slicedDot + 1).toLowerCase();
+
+    if (videoExt.includes(ext)) {
+      const preview = document.querySelector(".video-preview");
+      preview.src = src;
+      preview.style.display = "block";
+    } else {
+      const preview = document.querySelector(".image-preview");
+      preview.src = src;
+      preview.style.display = "block";
+    }
+  }
+};
+
+window.showCoverPreview = function (event) {
+  if (event.target.files.length > 0) {
+    const src = URL.createObjectURL(event.target.files[0]);
+    const coverPreview = document.querySelector(".cover-image-preview");
+    coverPreview.src = src;
+    coverPreview.style.display = "block";
+  }
+};

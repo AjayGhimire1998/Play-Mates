@@ -1,12 +1,16 @@
 class PostsController < ApplicationController
     before_action :require_set_profile! 
+    
     def index 
         @posts = Post.all
+        
         if !params[:category].blank?
             @posts = Post.by_category(params[:category])
         else
             @posts = Post.all
         end
+
+
     end
 
     def new 
@@ -54,7 +58,7 @@ class PostsController < ApplicationController
     private 
 
     def post_params 
-        params.require(:post).permit(:caption, :image, :user_id, category_ids:[], categories_attributes: [:name])
+        params.require(:post).permit(:caption, :post_file, :user_id, category_ids:[], categories_attributes: [:name])
     end
 
 end

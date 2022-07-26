@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :rooms do 
     resources :messages
   end
+  
 
   resources :users do 
     resources :profiles, only: [:edit, :new, :create, :update]
@@ -28,8 +29,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   root 'home#index'
-
-  get '/auth/:provider/callback', to: 'sessions#omniauth'
+  get '/auth/:provider/callback/', to: 'sessions#omniauth'
 
   # get 'sign_up', action: :new, controller: 'registrations'
   

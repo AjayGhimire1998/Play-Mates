@@ -5,6 +5,15 @@ class HomeController < ApplicationController
         @post = Post.new
         @posts = Post.all
         @profiles = Profile.all
-        # @post
+        
+        if @posts.length > 10
+            @over_ten = true
+            @posts = @posts[0..9]
+        end
+
+        if params[:more]
+            @over_ten = false
+            @posts = Post.all
+        end
     end
 end

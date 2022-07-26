@@ -1,10 +1,9 @@
-<div class="right-sidebar">
-    <%= render partial: 'profiles/searchform' %>
-    <br><br>
-    <%= render partial: 'profiles/searched', locals: {profiles: @profiles} %>
-</div>
-<div class="content">
+
+<div class="content-posts">
+    <% if params[:search] %>
+         <h4>Showing Results for: <span style="color: darkblue"><%= params[:search] %></span></h4>
+    <% end %>
     <% @profiles.each do |profile| %>
-        <%= render partial: 'posts/posts', locals: {posts: profile.user.posts, current_city: @current_city, current_country: @current_country, room: profile.user.rooms.new} %>
+        <%= render partial: 'posts/posts', locals: {posts: profile.user.posts, current_city: @current_city, current_country: @current_country} %>
     <% end %>
 </div>

@@ -2,7 +2,7 @@ source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.2"
-
+gem "sassc-rails"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.3"
 
@@ -45,15 +45,20 @@ gem "kt-paperclip", "~> 6.4", ">= 6.4.1"
 gem "geocoder"
 gem "webpacker"
 gem 'redis'
-gem 'omniauth-rails_csrf_protection', '~> 0.1.2'
-
-gem "dotenv-rails", "~> 2.7"
-gem "omniauth", "~> 2.1"
+gem 'oauth2'
+gem 'dotenv-rails'
+gem 'omniauth'
 gem 'omniauth-google-oauth2'
+gem 'omniauth-facebook'
+gem "omniauth-rails_csrf_protection"
+
+gem 'file_validators'
+gem 'aws-sdk-s3', '~> 1.114', require: false
+
 
 
 # Use Sass to process CSS
-# gem "sassc-rails"
+
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"

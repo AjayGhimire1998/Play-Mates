@@ -14,13 +14,12 @@
         <%= f.text_area :caption, placeholder: "What's on your mind?", :cols => 30, :rows => 3, class: "caption-box"  %>
         <br><br>
 
-        <%= f.label "Choose an Image or Video to Upload:" %>
-        <div class="input-group">
-            <div class="custom-file">
-                <%= f.file_field :post_file, class: "form-control custom-file-input" %>
-            </div>
-        </div><br><br>
-
+        <%= f.label "Choose an Image or a Video to Upload:" %>
+        <%= f.file_field :post_file, class: "form-control", onchange: "showPreview(event)" %>
+        <div class="preview">
+            <img class="image-preview">
+            <video class="video-preview" controls></video>
+        </div>
         <%= f.label "Select Games related to your post:" %>
         <div class= "checkboxes">
             <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %>

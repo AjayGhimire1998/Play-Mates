@@ -5,6 +5,7 @@ class RoomsController < ApplicationController
     end
 
     def create
+      # @room = Room.new(room_params)
       if Room.between(params[:sender_id], params[:recipient_id]).present?
         @room = Room.between(params[:sender_id], params[:recipient_id]).first
       else

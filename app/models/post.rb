@@ -4,13 +4,19 @@ class Post < ApplicationRecord
     has_many :categories, through: :post_categories, dependent: :destroy
 
     validates :caption, presence: true
-    validates :image, presence: true 
-  
-    has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }
-    validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
+    
+    validates :post_file, presence: true
+    validates :post_file, file_size: { less_than_or_equal_to: 200.megabytes, message: "Please Check File Size" }
+
+    default_scope {order(updated_at: :desc)}
 
     accepts_nested_attributes_for :categories
+
+    has_one_attached :post_file
     
+
+
+
     def categories_attributes=(category_attributes)
         category_attributes.values.each do |category_attr|
           if category_attr["name"].present? 
@@ -23,8 +29,7 @@ class Post < ApplicationRecord
     def self.by_category(category_id)
       if category_id
         self.includes(:categories).where(categories: { id: category_id})
-      else
-        self.all
       end
     end
+
 end

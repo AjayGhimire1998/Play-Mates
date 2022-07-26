@@ -1,5 +1,5 @@
 <%# <h4>All Users</h4> %>
-<% @profiles.each do |profile| %>
+<% profiles.each do |profile| %>
     <%= link_to_image(profile.avatar.url, "in-posts-avatar", view_profile_path(id: profile.user.id)) %>
     <strong><%= link_to profile.username, view_profile_path(id: profile.user.id), class: "friends-name" %></strong><br><br>
 <% end %>

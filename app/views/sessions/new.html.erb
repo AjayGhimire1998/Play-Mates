@@ -26,7 +26,8 @@ s
             </div>
         </div>
 
-        <%= link_to "Login via GOOGLE", '/auth/google_oauth2/callback', class: "btn btn-danger"  %>
+        <%# <%= button_to "Login via FACEBOOK", '/auth/facebook' %> 
+        <%= button_to "Login via GOOGLE", '/auth/google_oauth2/', :data => {trubo: "false"}%>
 
 
     </div>

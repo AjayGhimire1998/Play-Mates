@@ -6,9 +6,7 @@ class ProfilesController < ApplicationController
         @profiles = Profile.all
         if !params[:search].blank? 
             @profiles = Profile.search_by_username(params[:search])
-        else
-            @profiles = Profile.all
-        end 
+        end
     end
 
     def new 
@@ -38,14 +36,6 @@ class ProfilesController < ApplicationController
         end
     end
 
-    # def show
-    #     # @user = @current_user  
-    #     # @profile = @current_user.profile
-    #     # @posts = @current_user.posts
-    #     # if @profile.nil?
-    #     #     redirect_to root_path, notice: "Profile not set up!"
-    #     # end 
-    # end
 
     def edit 
         @user = @current_user

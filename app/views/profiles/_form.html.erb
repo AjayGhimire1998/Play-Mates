@@ -27,28 +27,23 @@
             <%= f.label "Choose Profile Picture:", class: "form-label" %>
         </div>
         <div class="input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-            </div>
-            <div class="custom-file">
-                <%= f.file_field :avatar, class: "form-control custom-file-input"%>
-                <label class="custom-file-label" for="inputGroupFile01">Choose</label>
-            </div>
+            <%= f.file_field :avatar, class: "form-control", onchange: "showPreview(event)"%>
+        </div>
+        <div class="preview">
+            <img class="image-preview">
         </div><br><br>
 
         <div class="field form-group">
             <%= f.label "Choose Cover Picture:", class: "form-label" %>
         </div>
         <div class="input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-            </div>
-            <div class="custom-file">
-                <%= f.file_field :cover, class: "form-control custom-file-input"%>
-                <label class="custom-file-label" for="inputGroupFile01">Choose</label>
-            </div>
+            <%= f.file_field :cover, class: "form-control ", onchange: "showCoverPreview(event)"%>
+        </div>
+        <div class="preview">
+            <img class="cover-image-preview">
         </div>
         <br><br>
+
         <div class="actions">
             <%= f.submit "Save", class: "btn btn-success" %>
         </div><br>

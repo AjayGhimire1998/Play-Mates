@@ -8,6 +8,9 @@ class User < ApplicationRecord
     has_many :rooms, through: :messages, dependent: :destroy
     has_secure_password 
 
+    :omniauthable
+
+
     before_save :downcase_email 
     validates :first_name, presence: true 
     validates :last_name, presence: true

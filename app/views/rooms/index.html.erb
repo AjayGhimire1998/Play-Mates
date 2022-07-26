@@ -1,5 +1,5 @@
 <div class="content">
-  <div class="ui segment">
+  <div class="chat-contents">
   <h3>Chats</h3>
 
   <div class="ui list">
@@ -17,19 +17,4 @@
     </div>
   </div>
 </div>
-
-  <div class="content">
-    <h3>All Users</h3>
-      <% @users.each do |user| %>
-        <% if user.id != current_user.id %>
-        <div class="item">
-            <%= user.profile.username %> 
-            <%= link_to 'Message me!', rooms_path(sender_id: current_user.id, recipient_id: user.id), method: 'post' %>
-        </div>
-        <% end %>
-      <% end %>
-  </div>
-
-
-
 </div>

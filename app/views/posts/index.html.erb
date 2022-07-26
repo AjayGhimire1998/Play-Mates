@@ -1,5 +1,8 @@
-<div class="content">
-    <%= render partial: 'posts/posts', locals: {posts: @posts, current_city: @current_city, current_country: @current_country} %>
-</div>
+<div class="content-posts">
+    <% if params[:category] %>
+        <h4>Showing Results for: <span style="color: darkblue"><%= searched_category %></span></h4>
+    <% end %>
+    <br> 
 
- 
+    <%= render partial: 'posts/posts', locals: {posts: @posts, current_city: @current_city, current_country: @current_country } %>
+</div>

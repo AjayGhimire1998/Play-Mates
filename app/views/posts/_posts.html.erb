@@ -1,3 +1,4 @@
+
 <% posts.each do |post| %>
     <div class="home-posts">
         <%= link_to_image(post.user.profile.avatar.url, "in-posts-avatar", view_profile_path(id: post.user.id)) %>
@@ -7,9 +8,15 @@
         <%= post.caption %>
         <br>
 
-        <div class="post-image-div", style = "background-image: url(<%= post.image.url %>);"></div>
+        <% if post.post_file.attached? %>
+            <% if post.post_file.content_type.include?("image") %>
+                <div class="post-image-div", style = "background-image: url(<%= url_for(post.post_file) %>);"></div>
+            <% else %>
+                <%= video_tag url_for(post.post_file), controls: true, style: "height: 350px; width: 480px;" %>
+            <% end %>
+        <% end %>
         <br>
-
+    
         <% if post.user == current_user  %> 
             <%= link_to "Edit Post", edit_user_post_path(user_id: post.user_id, id: post.id), class: "btn btn-primary btn-sm" %>
             <%= link_to "Delete Post", user_post_path(post.user, post), class: "btn btn-danger btn-sm", style: "float: right;", data: {

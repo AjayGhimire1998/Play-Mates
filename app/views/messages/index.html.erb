@@ -3,7 +3,6 @@
 <% if @over_ten %>
    <%= link_to 'Show Previous', '?m=all' %>
 <% end %>
-<div class="ui segment">
   <% @messages.each do |message| %>
     <% if message.content %>
       <% user = User.find(message.user_id) %>
@@ -16,7 +15,6 @@
           </div>
     <% end %>
   <% end %>
-</div>
 
 <%= form_for [@room, @message] do |f| %>
   <div class="field">

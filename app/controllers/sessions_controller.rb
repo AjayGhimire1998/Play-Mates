@@ -2,17 +2,17 @@ class SessionsController < ApplicationController
     before_action :already_logged_in!, only: [:new, :create]
     def omniauth 
         # binding.pry
+        # auth = request.env["omniauth.auth"]
         @user = 
             User.find_or_create_by(email: auth[:info][:email]) do |u|
                 u.email = auth[:info][:email]
                 u.first_name = auth[:info][:first_name]
-                u.last_name = auth[:info][:last_namename]
+                u.last_name = auth[:info][:last_name]
                 u.provider = auth[:provider]
                 u.uid = auth[:uid]
                 u.password = SecureRandom.hex(10)
             end
-        if @user.valid? && @user.save 
-            
+        if @user.valid?
             session[:user_id] = @user.id 
             redirect_to root_path, notice: "Login Successful through Google."
         else
