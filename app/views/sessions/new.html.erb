@@ -13,7 +13,14 @@
             <%= f.password_field :password, class: "form-control" %>
         </div><br>
 
-
+    <div class="card">
+            <h5 class="card-header">Guest Credentials:</h5>
+            <div class="card-body">
+                <h6 class="card-title">Email: guest@test.com</h5>
+                <h6 class="card-title">Password: @Guest123</h6>
+            </div>
+        </div>
+        <br>
         <div class="actions">
             <%= f.submit "Log in", class: "btn btn-success" %>
         </div><br>
@@ -25,10 +32,8 @@ s
                 <%= link_to "Create new account", signup_path, class: 'btn btn-secondary' %>
             </div>
         </div>
-
-        <%# <%= button_to "Login via FACEBOOK", '/auth/facebook' %> 
-        <%= button_to "Login via GOOGLE", '/auth/google_oauth2/', :data => {trubo: "false"}%>
-
-
     </div>
 <% end %>
+<div class="facebook-btn">
+    <%= button_to "Login Via Facebook", "/auth/facebook", method: :post, data: {turbo: "false"}, class: "btn btn-primary" %>
+<div>

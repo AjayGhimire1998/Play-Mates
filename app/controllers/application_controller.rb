@@ -18,6 +18,12 @@ class ApplicationController < ActionController::Base
         end
     end
 
+    def account_deleted! 
+        if @current_user.nil?
+            redirect_to login_path, notice: "Account Deleted Successfully!"
+        end
+    end
+
     def require_user_logged_in!
         redirect_to login_path, notice: "You must be logged in!" if @current_user.nil?
     end

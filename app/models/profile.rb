@@ -1,7 +1,7 @@
 class Profile < ApplicationRecord
     belongs_to :user
 
-    validates :username, presence: true
+    validates :username, presence: true, uniqueness: { case_sensitive: false }
     validates :avatar, presence: true
     validates :bio, presence: true
     validates :cover, presence: true

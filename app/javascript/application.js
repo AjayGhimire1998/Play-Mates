@@ -35,6 +35,7 @@ window.handleAddCategoryToggler = function (e) {
 };
 
 window.showPreview = function (event) {
+  console.log("clicked??")
   if (event.target.files.length > 0) {
     const src = URL.createObjectURL(event.target.files[0]);
     const videoExt = ["mov", "mkv", "mp4", "webm"];

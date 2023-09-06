@@ -45,12 +45,18 @@ gem "kt-paperclip", "~> 6.4", ">= 6.4.1"
 gem "geocoder"
 gem "webpacker"
 gem 'redis'
-gem 'oauth2'
+# gem 'net-smtp'
+# gem 'thin'
+
 gem 'dotenv-rails'
+gem 'rack-cors', :require => 'rack/cors'
+
+gem 'net-smtp'
+gem 'oauth2'
+gem "omniauth-rails_csrf_protection"
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
-gem "omniauth-rails_csrf_protection"
 
 gem 'file_validators'
 gem 'aws-sdk-s3', '~> 1.114', require: false

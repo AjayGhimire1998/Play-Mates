@@ -3,22 +3,25 @@ class SessionsController < ApplicationController
     def omniauth 
         # binding.pry
         # auth = request.env["omniauth.auth"]
+        # raise auth.inspect
         @user = 
             User.find_or_create_by(email: auth[:info][:email]) do |u|
                 u.email = auth[:info][:email]
-                u.first_name = auth[:info][:first_name]
-                u.last_name = auth[:info][:last_name]
+                u.first_name = auth[:info][:name]
+                u.last_name = auth[:info][:name]
                 u.provider = auth[:provider]
                 u.uid = auth[:uid]
-                u.password = SecureRandom.hex(10)
+                u.password = u.password_confirmation = SecureRandom.hex(10)
             end
-        if @user.valid?
-            session[:user_id] = @user.id 
-            redirect_to root_path, notice: "Login Successful through Google."
-        else
-            redirect_to login_path, notice: "Crediential Errors."
-        end
+            if @user.valid? && @user.save!
+                session[:user_id] = @user.id 
+                redirect_to root_path, notice: "Login Successful through Facebook."
+            else
+                flash[:notice] =  "Crediential Errors."
+                redirect_to login_path
+            end
     end
+
 
     def create 
         user = User.find_by(email: params[:email])

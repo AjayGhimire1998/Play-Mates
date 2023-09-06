@@ -1,6 +1,7 @@
 class ProfilesController < ApplicationController
     before_action :require_set_profile!, only: [:edit, :update]
-    before_action :correct_user_profile, only: [:edit, :update, :destroy]
+    before_action :correct_user_profile, only: [:edit, :update]
+    before_action :account_deleted!, only: [:view]
 
     def index
         @profiles = Profile.all

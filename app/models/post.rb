@@ -15,8 +15,6 @@ class Post < ApplicationRecord
     has_one_attached :post_file
     
 
-
-
     def categories_attributes=(category_attributes)
         category_attributes.values.each do |category_attr|
           if category_attr["name"].present? 

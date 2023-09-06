@@ -14,14 +14,13 @@ class PostsController < ApplicationController
     end
 
     def new 
-        @post = Post.new
-        # @user = @current_user
-       
+        @post = Post.new     
     end 
 
     def create 
-        @post = Post.create(post_params)
         # raise params.inspect
+        @post = Post.create(post_params)
+ 
         if @post.save 
             redirect_to root_path, notice: "Post Uploaded!"
         else

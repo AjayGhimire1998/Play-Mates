@@ -16,6 +16,12 @@
  .body{
   font-family: monospace;
  }
+ .facebook-btn{
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 200px;
+ }
  .reg-form{
     padding: 50px;
     background-color: rgb(0, 0, 86);
@@ -24,7 +30,6 @@
     align-items: center;
     margin-left: 100px;
     margin-right: 100px;
-    margin-bottom: 150px;
  }
  .reg-form-profile{
     padding: 50px;

@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   root 'home#index'
-  get '/auth/:provider/callback/', to: 'sessions#omniauth'
+  get '/auth/facebook/callback', to: 'sessions#omniauth'
 
   # get 'sign_up', action: :new, controller: 'registrations'
   
@@ -40,6 +40,6 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy'
   get 'password/edit', to: 'passwords#edit', as: 'edit_password'
   patch 'password/edit', to: 'passwords#update'
-  get '/cancel', to: 'users#destroy'
+  get '/cancel', to: 'users#destroy', as: 'cancel'
 
 end
